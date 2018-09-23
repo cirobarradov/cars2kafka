@@ -50,9 +50,9 @@ services:
       KSQL_KSQL_SERVICE_ID: flydays_ksql
     ports:
       - 8088:8088
-  zity2kafka:
-    image: zity2kafka
+  cars2kafka:
+    image: cirobarradov/cars2kafka
     volumes:
       - ./config/:/app/config/
     depends_on:
-      - schema-registry
+      - ksql-server
