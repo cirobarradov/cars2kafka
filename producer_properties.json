@@ -1,0 +1,34 @@
+{
+  "schema":{
+        "schema.registry.url": "http://schema-registry:8081",
+        "mandatory_inputs":["schema_value_file"]
+  },
+  "security":{
+    "ssl.key.password":123456,
+    "ssl.keystore.location":"kafka.server.keystore.jks",
+    "ssl.keystore.password":123456,
+    "ssl.truststore.location":"kafka.client.truststore.jks",
+    "ssl.truststore.password":123456,
+    "security.protocol":"SSL"
+  },
+
+  "performance":{
+    "lantency":{
+      "linger.ms": 0,
+      "compression.type": "none",
+      "acks": 1
+    },
+    "throughput":{
+      "batch.size": 200000,
+      "linger.ms": "100",
+      "compression.type": "lz4",
+      "acks": 1,
+      "retries": 0,
+      "buffer.memory": 33554432
+    }
+  },
+
+  "default":{
+    "bootstrap.servers":"kafka:29092"
+  }
+}

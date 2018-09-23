@@ -1,0 +1,11 @@
+{
+  "user_id": 30493,
+  "vehicle_id": 99,
+  "book_status": "BOOKED_DRIVE",
+  "event_id": "4408528",
+  "vehicle_lat": 40.430195,
+  "vehicle_lng": -3.680253,
+  "vehicle_fuel_percent": 42.4,
+  "vehicle_remaining_km": 110.0,
+  "book_address": "Calle de José Ortega y Gasset, 28006 Madrid"
+}

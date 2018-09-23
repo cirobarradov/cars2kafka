@@ -1,0 +1,45 @@
+{
+   "namespace": "flydays",
+   "name": "value",
+   "type": "record",
+   "fields" : [
+     {
+       "name" : "user_id",
+       "type" : "int"
+     },
+     {
+       "name" : "vehicle_id",
+       "type" : "int"
+     },
+     {
+       "name" : "book_status",
+       "type" : "string"
+     },
+     {
+       "name" : "event_id",
+       "type" : "string"
+     },
+     {
+       "name" : "vehicle_lat",
+       "type" : "double"
+     },
+     {
+       "name" : "vehicle_lng",
+       "type" : "double"
+     },
+     {
+       "name" : "vehicle_fuel_percent",
+       "type" : "float"
+     },
+     {
+       "name" : "vehicle_remaining_km",
+       "type" : "float"
+     },
+     {
+       "name" : "book_address",
+       "type" : "string"
+     }
+   ]
+}
+
+

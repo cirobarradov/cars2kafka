@@ -1,0 +1,7 @@
+{
+  "topic": "test_zity",
+  "source_type":"message",
+  "debug_mode":true,
+  "schema":true,
+  "schema_value_file":"value_schema.avsc"
+}
