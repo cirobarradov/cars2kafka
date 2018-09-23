@@ -1,21 +1,21 @@
 {
   "mysql_config": {
-    "host": "ksql-mysql-server.mysql.database.azure.com",
-    "user": "user@ksql-mysql-server",
-    "password": "3jtkZQGjV4DzM9q8",
-    "database": "zity"
+    "host": "",
+    "user": "",
+    "password": "",
+    "database": ""
   },
   "post": {
-    "url": "https://eiffel-prod.ridecell.com/dispatch/login/?next=/19037-zity/fleet/trips",
+    "url": "",
     "data": {
-      "username": "mcaballero@ferrovial.com",
-      "password": "Marino.205"
+      "username": "",
+      "password": ""
     }
   },
-  "cookie": "csrftoken",
-  "sessionCookie": "b7us5z3xzk57z8wmi7n3c71dqo1lnaiu",
-  "cfuidCookie": "db962587871ed9753e4df5795ff24c5251537431421",
-  "url_get": "https://eiffel-prod.ridecell.com/api/v3/rentals?page=1&page_size=25&timestamp=1537427735530&ordering=-created_at&role=staff&in_progress=True&service=5",
-  "header": { "referer": "https://eiffel-prod.ridecell.com/19037-zity/fleet/trips",
-                   "authority": "eiffel-prod.ridecell.com"}
+  "cookie": "",
+  "sessionCookie": "",
+  "cfuidCookie": "",
+  "url_get": "",
+  "header": { "referer": "",
+                   "authority": ""}
 }
