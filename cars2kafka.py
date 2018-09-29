@@ -70,15 +70,15 @@ else:
         # Read data
         select_stmt = "SELECT * FROM zity_users WHERE USER_ID = %(uid)s"
         cursor.execute(select_stmt, {'uid': customerId})
-        # if cursor.rowcount == 0:
+        if cursor.rowcount == 0:
         # Insert data into table
-        # cursor.execute("INSERT INTO zity_users (USER_ID, NAME, PHONE, EMAIL) VALUES (%s, %s, %s, %s);", (customerId, customerFullName, customerPhone, customerEmail))
+            cursor.execute("INSERT INTO zity_users (USER_ID, NAME, PHONE, EMAIL) VALUES (%s, %s, %s, %s);", (customerId, customerFullName, customerPhone, customerEmail))
         # Read data
         select_stmt = "SELECT * FROM zity_cars WHERE CAR_ID = %(uid)s"
         cursor.execute(select_stmt, {'uid': vehicleId})
-        # if cursor.rowcount == 0:
+        if cursor.rowcount == 0:
         # Insert data into table
-        #    cursor.execute("INSERT INTO zity_cars (CAR_ID, LICENSE_PLATE, VIN) VALUES (%s, %s, %s);", (vehicleId, vehiclePlate, vehicleVin))
+            cursor.execute("INSERT INTO zity_cars (CAR_ID, LICENSE_PLATE, VIN) VALUES (%s, %s, %s);", (vehicleId, vehiclePlate, vehicleVin))
         # Read data
         select_stmt = "SELECT * FROM zity_cars_users WHERE EVENT_ID = %(uid)s"
         cursor.execute(select_stmt, {'uid': eventId})
