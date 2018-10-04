@@ -11,7 +11,6 @@ with open(sys.argv[1]) as config_file:
 
 
 try:
-
     # get configuration
     #with open('config.json', 'r') as f:
     #    config = json.load(f)
@@ -34,6 +33,9 @@ try:
         r = s.get(config['url_get'],
             headers=headers)
         response = json.loads(r.text)
+        if 'results' not in response:
+            print("no results in request:",response)
+            sys.exit(0)
     except requests.exceptions.HTTPError as errh:
         print("Http Error:", errh)
     except requests.exceptions.ConnectionError as errc:
