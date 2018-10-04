@@ -35,8 +35,6 @@ services:
       - zookeeper
       - kafka
     ports:
-    # Exposes 9092 for external connections to the broker
-    # Use kafka:29092 for connections internal on the docker network
       - 8081:8081      
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
