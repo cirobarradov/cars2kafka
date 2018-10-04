@@ -50,61 +50,63 @@ except mysql.connector.Error as err:
     else:
         print(err)
 else:
-    cursor = conn.cursor(buffered=True)
-    for result in response['results']:
-        rStatus = result['status']
-        customerEmail = result['customer']['email']
-        customerFullName = result['customer']['full_name']
-        customerPhone = result['customer']['phone_number']
-        customerId = result['customer_id']
-        eventId = result['event_id']
-        rid = result['id']
-        vehicleLat = result['vehicle']['gps_position']['location']['lat']
-        vehicleLng = result['vehicle']['gps_position']['location']['lng']
-        vehicleAddress = result['vehicle']['gps_position']['location']['short_display_address']
-        vehiclePlate = result['vehicle']['license_plate_number']
-        vehicleFuelPercent = result['vehicle']['fuel_percentage']
-        vehicleRemainingKm = result['vehicle']['remaining_range_in_meters'] / 1000
-        vehicleVin = result['vehicle']['vin_number']
-        vehicleId = result['vehicle_id']
-        # Read data
-        select_stmt = "SELECT * FROM zity_users WHERE USER_ID = %(uid)s"
-        cursor.execute(select_stmt, {'uid': customerId})
-        if cursor.rowcount == 0:
-        # Insert data into table
-            cursor.execute("INSERT INTO zity_users (USER_ID, NAME, PHONE, EMAIL) VALUES (%s, %s, %s, %s);", (customerId, customerFullName, customerPhone, customerEmail))
-        # Read data
-        select_stmt = "SELECT * FROM zity_cars WHERE CAR_ID = %(uid)s"
-        cursor.execute(select_stmt, {'uid': vehicleId})
-        if cursor.rowcount == 0:
-        # Insert data into table
-            cursor.execute("INSERT INTO zity_cars (CAR_ID, LICENSE_PLATE, VIN) VALUES (%s, %s, %s);", (vehicleId, vehiclePlate, vehicleVin))
-        # Read data
-        select_stmt = "SELECT * FROM zity_cars_users WHERE EVENT_ID = %(uid)s"
-        cursor.execute(select_stmt, {'uid': eventId})
-        if cursor.rowcount == 0:
-            # cursor.execute("INSERT INTO zity_cars_users (USER_ID, CAR_ID, STATUS, EVENT_ID, LATITUDE, LONGITUDE) VALUES (%s, %s, %s, %s, %s, %s);", (customerId, vehicleId, rStatus, eventId, vehicleLat, vehicleLng))
-            message = {}
-            message['user_id'] = customerId
-            message['vehicle_id'] = vehicleId
-            message['book_status'] = rStatus
-            message['event_id'] = eventId
-            message['vehicle_lat'] = vehicleLat
-            message['vehicle_lng'] = vehicleLng
-            message['vehicle_fuel_percent'] = vehicleFuelPercent
-            message['vehicle_remaining_km'] = vehicleRemainingKm
-            message['book_address'] = vehicleAddress
-            json_msg = json.dumps(message)
-            #print(message)
-            try:
-                p = KafkaProducer('user.json')
-                p.send(value=message)
-            except Exception as e:
-                print(e)
+    while True :
+        cursor = conn.cursor(buffered=True)
+        for result in response['results']:
+            rStatus = result['status']
+            customerEmail = result['customer']['email']
+            customerFullName = result['customer']['full_name']
+            customerPhone = result['customer']['phone_number']
+            customerId = result['customer_id']
+            eventId = result['event_id']
+            rid = result['id']
+            vehicleLat = result['vehicle']['gps_position']['location']['lat']
+            vehicleLng = result['vehicle']['gps_position']['location']['lng']
+            vehicleAddress = result['vehicle']['gps_position']['location']['short_display_address']
+            vehiclePlate = result['vehicle']['license_plate_number']
+            vehicleFuelPercent = result['vehicle']['fuel_percentage']
+            vehicleRemainingKm = result['vehicle']['remaining_range_in_meters'] / 1000
+            vehicleVin = result['vehicle']['vin_number']
+            vehicleId = result['vehicle_id']
+            # Read data
+            select_stmt = "SELECT * FROM zity_users WHERE USER_ID = %(uid)s"
+            cursor.execute(select_stmt, {'uid': customerId})
+            if cursor.rowcount == 0:
+            # Insert data into table
+                cursor.execute("INSERT INTO zity_users (USER_ID, NAME, PHONE, EMAIL) VALUES (%s, %s, %s, %s);", (customerId, customerFullName, customerPhone, customerEmail))
+            # Read data
+            select_stmt = "SELECT * FROM zity_cars WHERE CAR_ID = %(uid)s"
+            cursor.execute(select_stmt, {'uid': vehicleId})
+            if cursor.rowcount == 0:
+            # Insert data into table
+                cursor.execute("INSERT INTO zity_cars (CAR_ID, LICENSE_PLATE, VIN) VALUES (%s, %s, %s);", (vehicleId, vehiclePlate, vehicleVin))
+            # Read data
+            select_stmt = "SELECT * FROM zity_cars_users WHERE EVENT_ID = %(uid)s"
+            cursor.execute(select_stmt, {'uid': eventId})
+            if cursor.rowcount == 0:
+                # cursor.execute("INSERT INTO zity_cars_users (USER_ID, CAR_ID, STATUS, EVENT_ID, LATITUDE, LONGITUDE) VALUES (%s, %s, %s, %s, %s, %s);", (customerId, vehicleId, rStatus, eventId, vehicleLat, vehicleLng))
+                message = {}
+                message['user_id'] = customerId
+                message['vehicle_id'] = vehicleId
+                message['book_status'] = rStatus
+                message['event_id'] = eventId
+                message['vehicle_lat'] = vehicleLat
+                message['vehicle_lng'] = vehicleLng
+                message['vehicle_fuel_percent'] = vehicleFuelPercent
+                message['vehicle_remaining_km'] = vehicleRemainingKm
+                message['book_address'] = vehicleAddress
+                json_msg = json.dumps(message)
+                #print(message)
+                try:
+                    p = KafkaProducer('user.json')
+                    p.send(value=message)
+                except Exception as e:
+                    print(e)
 
-    # Cleanup
-    conn.commit()
-    cursor.close()
+        # Cleanup
+        conn.commit()
+        cursor.close()
+        sleep(5)
     conn.close()
     print("Done.")
 
