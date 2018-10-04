@@ -105,3 +105,12 @@ services:
      - VALUE_CONVERTER=io.confluent.connect.avro.AvroConverter
      - CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL=http://schema-registry:8081
      - CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL=http://schema-registry:8081
+  # Other systems
+  mysql:
+    image: debezium/example-mysql:0.8
+    environment:
+     - MYSQL_ROOT_PASSWORD=3jtkZQGjV4DzM9q8
+     - MYSQL_USER=user@ksql-mysql-server
+     - MYSQL_PASSWORD=3jtkZQGjV4DzM9q8
+    volumes:
+- ./customers.sql:/docker-entrypoint-initdb.d/z99_dump.sql
