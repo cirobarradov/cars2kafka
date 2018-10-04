@@ -112,5 +112,3 @@ services:
      - MYSQL_ROOT_PASSWORD=3jtkZQGjV4DzM9q8
      - MYSQL_USER=user@ksql-mysql-server
      - MYSQL_PASSWORD=3jtkZQGjV4DzM9q8
-    volumes:
-- ./customers.sql:/docker-entrypoint-initdb.d/z99_dump.sql
