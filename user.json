@@ -1,5 +1,5 @@
 {
-  "topic": "test_zity",
+  "topic": "zity-rentals",
   "source_type":"message",
   "debug_mode":true,
   "schema":true,
