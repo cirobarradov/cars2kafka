@@ -9,6 +9,7 @@ import time
 with open(sys.argv[1]) as config_file:
     config = json.load(config_file)
 
+print(config)    
 
 try:
     # get configuration
