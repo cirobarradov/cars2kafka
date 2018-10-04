@@ -4,6 +4,7 @@ import mysql.connector
 from mysql.connector import errorcode
 from kafka_producer import KafkaProducer
 import sys
+import time
 
 with open(sys.argv[1]) as config_file:
     config = json.load(config_file)
@@ -106,7 +107,7 @@ else:
         # Cleanup
         conn.commit()
         cursor.close()
-        sleep(5)
+        time.sleep(5)
     conn.close()
     print("Done.")
 
