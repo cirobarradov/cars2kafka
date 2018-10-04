@@ -108,7 +108,7 @@ else:
         # Cleanup
         conn.commit()
         cursor.close()
-        time.sleep(5)
+        time.sleep(60)
     conn.close()
     print("Done.")
 
