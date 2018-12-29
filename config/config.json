@@ -1,21 +1,8 @@
 {
   "mysql_config": {
-    "host": "",
-    "user": "",
-    "password": "",
-    "database": ""
-  },
-  "post": {
-    "url": "",
-    "data": {
-      "username": "",
-      "password": ""
-    }
-  },
-  "cookie": "",
-  "sessionCookie": "",
-  "cfuidCookie": "",
-  "url_get": "",
-  "header": { "referer": "",
-                   "authority": ""}
+    "host": "ksql-mysql-server.mysql.database.azure.com",
+    "user": "user@ksql-mysql-server",
+    "password": "3jtkZQGjV4DzM9q8",
+    "database": "zity"
+  }
 }
