@@ -37,8 +37,8 @@ def generate_fake_vehicle(result,fake):
     result['vehicle']['gps_position']['location']['lng'] = round(-3.70 + random() / 100,6)
     result['vehicle']['gps_position']['location']['short_display_address'] = 'Calle '+fake.address().replace('\n',',')
     vehicle_id=str(result['vehicle_id'])
-    result['vehicle']['license_plate_number'] = str(sum([int(x) for x in vehicle_id]))+\
-                                                vehicle_id+"".join(choices(ascii_uppercase, k=3))
+    result['vehicle']['license_plate_number'] = str(sum([int(x) for x in vehicle_id])%10)+\
+                                            vehicle_id+"".join(choices(ascii_uppercase, k=3))
     result['vehicle']['fuel_percentage'] = round(random()*100,1)
     result['vehicle']['remaining_range_in_meters'] = int(result['vehicle']['fuel_percentage']*2590)
     result['vehicle']['vin_number'] = 'VF1AGVYF058686'+vehicle_id
