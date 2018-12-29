@@ -3,3 +3,5 @@ mysql-connector-python
 confluent_kafka
 confluent_kafka[avro]
 avro_python3
+unidecode
+faker
